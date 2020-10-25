@@ -22,7 +22,7 @@ echo "Hello $USER"
 
 echo "I am going to print filenames, the # of lines and the # of words on your displays"
 
-for file in *; 
+for file in $( ls -A ); 
 	do 
 		if [ -f "$file" ]; then 
 		words_lines=$(wc -l -w "$file")
