@@ -1,0 +1,60 @@
+#!/bin/bash 
+#
+# Pratham Kwatra
+# 9/10/2020 [DATE/MONTH/YEAR]
+# 
+# Platform: Linux tux5 5.4.0-48-generic #52-Ubuntu SMP Thu Sep 10 10:58:49 UTC 2020 x86_64 x86_64 x86_64 GNU/Linux 
+# 
+# EDITOR: tabs=3, cols=120 (checked with echo $COLUMNS)  
+#	
+# a1-top
+
+debugOn="n"
+
+read -p "Do you want to see the script as it executes? (y/[n]) => " \
+   debugOn
+if [ "$debugOn" == "y" -o "$debugOn" == "Y" ] ; then
+	set -x      # very useful switch to the set command
+fi
+
+#echo "Hello $USER"
+
+argv_one=$1
+
+createJSON() {
+	ls -A
+	echo $PWD
+	ls README 2>/dev/null
+	if [ $? -eq 0 ]
+	then
+		echo README
+	else
+		echo No README
+		fi
+	#bash .$argv_one/dir2json.bash
+}
+
+CDdir(){
+	for dir in $( ls -A )
+		do 
+		if [ -d $dir ] ; 
+			then main $dir; 
+		fi	
+		done
+	cd ..
+	}
+
+main() {
+if [ $# -eq 0 ]
+	then 
+		createJSON
+		CDdir *
+	else
+		cd $1
+		createJSON
+		CDdir $1
+fi } 
+
+#main ~pk588/CS265/Dir2
+#main ~kschmidt/public_html/Files/Dir2
+main $1
