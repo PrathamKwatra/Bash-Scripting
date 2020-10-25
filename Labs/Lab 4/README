@@ -1,0 +1,33 @@
+#Lab 5 
+This Lab focused on creating three different scripts
+	reextend
+		This script takes two arguments from the command line. 
+		The arguments have to be file name extensions. 
+		The script changes the extensions of all files with the 
+		.first_argument extension into the  .second_argument extension. 
+	organiseMusic
+		There are 2 versions present. 
+		organiseMusic
+			This file uses the function ArtistDirCreate and a for loop to create 
+			directories by the name of song Artists in that directory. This only works
+			if there are .mp3 files available in the directory.
+			The name of the mp3 files have to be formatted to look like this:
+			"Artist Name - Song Name.mp3"  
+		testOrgMus
+			This script tested the function used in the main file - organiseMusic.
+			The function ArtistDirCreate, creates a directory by the Artist name given as
+			an argument and moves all songs from that artist in created directory. It also
+			removes the artist name from the file name before moving it. 
+	count.bash
+		There are 3 versions present.
+		oldCount
+			The oldCount script was created before I understood the 
+		concept of regular files, thus I tried to use the file command
+		to get the file type and compare that file type to a string. If the 
+		file type matches the string, then prints out the words and lines in that file
+		SecondDraftcount.bash
+			Here I tried to use different Bash utilities such as ls, grep and awk. 
+			That method was a little too long winded and inefficient. 
+		count.bash
+			This is much more concise and easier to understand. It is still the same logic,
+			but utilizes bash commands more efficiently. 
