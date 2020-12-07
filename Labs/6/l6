@@ -1,0 +1,136 @@
+#Pratham Kwatra
+#Lab 6
+
+1.1) 
+	a) 0 
+	b) 1 
+	c) 1 
+	d) 17 
+	e) 12 
+ 	f) 1 
+ 	g) 1 
+ 	h) 1 
+ 	i) 1
+	thus, other than the a) which is 0, all the other parts are 1. This means that only 'a' is false(0) and all the 
+	others 'b, c, d, e, f, g, ,h, i ' are true(1)
+
+	a) F
+	b) T
+	c) T
+	d) T
+	e) T
+	f) T
+	g) T
+	h) T
+	i) T
+1.2) 
+	
+/*********************************************************
+ * leap.c - reads until blank line or EOF
+ *
+ *******************************************************/
+
+#include <stdio.h>
+#include <stdlib.h>
+
+int leap_yes(int year)
+{
+	if (year%100 == 0)
+	{ 
+		if (year%400 == 0) 
+			printf("YES\n");
+		else
+			printf("NO\n");
+	}
+	else	
+	{
+		if (year%4 == 0)
+			printf("YES\n");
+		else
+			printf("NO\n");
+	}
+}
+
+
+int main()
+{
+	char *buff = NULL ;
+	size_t len ;
+	int leap;
+	printf ("Please enter a year --> ");
+	while ( getline( &buff, &len, stdin ) > 1 )
+	{
+		sscanf( buff, "%d", &leap);
+	 	leap_yes(leap);
+		printf ("Please enter a year --> ");
+	}
+
+	return 0;
+}
+
+2.1) 
+	I think the output would be the values of i ( 5 3 4 2 ). Only 4 values because j hits 0 before i can reach 1. 
+
+2.2) Well, the loop will be like 10 5 3(2.5) 2(1.5) 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 ...
+	till infinite. This is an infinite loop. Because this is similar to float div in python once you reach 1 you cannot
+	below 1. And, in this loop the condition is i >= 1, thus causing the loop to go for an infinite loop.
+
+2.3)
+	char resp = 'y' ;
+
+	while (! (resp=='n' || resp=='N') )
+	{
+	   // processing...
+
+	   printf( "\nEnter another input? (y/[n]) => " ) ;
+      // the space preceding the %c tells scanf to skip whitespace
+	   scanf( " %c", &resp ) ;
+	} 
+
+2.4)
+
+/*********************************************************
+ * lab_readlines.c - reads until blank line or EOF
+ *
+ *******************************************************/
+
+#include <stdio.h>
+#include <stdlib.h>
+
+
+int main()
+{
+	char *buff = NULL ;
+	size_t len ;
+	int i=0, cnt = 1 ;
+	double sum=0, mean=0, stand=0; 
+	float temp_float=0, max =0, min=0;
+	
+	printf("Please Enter a number --> ");
+	getline(&buff, &len, stdin);
+	sscanf(buff, "%f", &temp_float);
+	sum = temp_float;
+	max = temp_float;
+	min = temp_float;
+	printf("Please Enter a number --> ");
+
+	while( getline( &buff, &len, stdin ) > 1 )
+	{
+		sscanf( buff, "%f", &temp_float);
+		sum += temp_float;
+		cnt++;
+		if ( temp_float < min )
+			min = temp_float;
+		if ( temp_float > max )
+			max = temp_float;
+		printf("Please Enter a number --> ");
+	}
+
+	printf( "\nEnd of input detected.  I read %d numbers.\n", cnt ) ;
+	mean = sum/cnt; 
+	
+	printf("\nMean: %.2lf \t\t Max: %.2lf \t\t Min: %.2lf\n", mean, max, min);
+	free( buff ) ;
+	return 0 ;
+}
+	

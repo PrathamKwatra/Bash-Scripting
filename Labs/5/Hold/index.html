@@ -1,0 +1,172 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<html>
+<head>
+	<meta http-equiv="Content-Language" content="en-us">
+	<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+	<meta http-equiv="Expires" content="no-expire">
+	<meta name="Author" content="Kurt Schmidt"><meta name="Copyright" content="">
+	<meta name="Publisher" content="Drexel University">
+	<meta name="Keywords" content="Programming Techniques Unix">
+	<meta name="Description"
+		content="Lab for CS265 - Adv. Programming Techniques">
+	<meta name="Pagetype" content="Lab">
+	<meta name="Audience" content="All">
+	<link rel='shortcut icon' type='image/gif'
+		href='../../../images/drexel.gif'></link>
+	<script language="JavaScript" src="../../courseInfo.js"></script>
+	<script language="JavaScript" src="../../../Scripts/courseFormat.js"></script>
+	<title> Lab -- C Language </title>
+	<link href="../labs.css" rel="stylesheet" type="text/css">
+</head>
+
+<body text="#330099" link="#000066" vlink="#000066" alink="#ff0000"
+	background="../../../images/blueTexture.jpeg">
+
+<h1> Lab &ndash; Intro to C </h1>
+
+<p kurt='fool'> The directory for this lab is <span class='fn'>~kschmidt/public_html/CS265/Labs/C</span> . </p>
+
+
+<h3> Introduction </h3>
+
+<!-- TODO -->
+<p> Here are some suggestions for functions to write, by way of getting practice with C, with pointers, and with linked
+lists and arrays. </p>
+
+<p> You might find the Tiny C Compiler helpful.  It is installed on tux.  Interestingly, you can simply
+run your program from source, helpful for recompiling/developing/debugging: </p>
+
+<div class='cli'>
+	$ <b>tcc -run sample.c arg1 arg2</b>
+</div>
+
+<p> (Note that the <span class='cmd'>-run</span> is <em>not</em> a POSIX long option.) </p>
+
+<!-- TODO -->
+<p> I've not played around w/multiple file-compiles and the <span class='cmd'>-run</span> option yet.  I'll get there. </p>
+
+<p> Or, simply use <span class='cmd'>gcc</span>.  This always works: </p>
+
+<div class='cli'>
+	$ <b>gcc sample.c -o sample</b><br/>
+	$ <b>./sample arg1 arg2</b>
+</div>
+
+<h3> The Exercises </h3>
+
+<h4> Loops </h4>
+
+<script><!--
+	question( "Write a function <span class='code'>t1( int n )</span> that prints the following figure, <em>n</em> tall by <em>n</em> wide:" )
+	//--></script>
+
+<blockquote style='font-family:monospace;'>
+<div class='output'>
+<pre>*
+**
+***
+****</pre>
+</div>
+</blockquote>
+
+<script><!--
+	question( "Write a function <span class='code'>t2( int n )</span> that prints the following figure, <em>n</em> tall by <em>n</em> wide:" )
+	//--></script>
+
+<blockquote style='font-family:monospace;'>
+<div class='output'>
+<pre>****
+***
+**
+*</pre>
+</div>
+</blockquote>
+
+<script><!--
+	question( "Write a function <span class='code'>t3( int n )</span> that prints the following figure, <em>n</em> tall by <em>n</em> wide:" )
+	//--></script>
+
+<blockquote style='font-family:monospace;'>
+<div class='output'>
+<pre>   *
+  **
+ ***
+****</pre>
+</div>
+</blockquote>
+
+<p> Hint:  Print the spaces that start each line. </p>
+
+<script><!--
+	question( "Write a function <span class='code'>t4( int n )</span> that prints the following figure <em>n</em> tall by <em>n</em> wide:" )
+	//--></script>
+
+<blockquote style='font-family:monospace;'>
+<div class='output'>
+<pre>****
+ ***
+  **
+   *</pre>
+</div>
+</blockquote>
+
+
+<h4> Arrays </h4>
+
+<script><!--
+	question( "Write a function <span class='code'>add3( int a[], int n)</span> that takes an array of integers (and its length), adds 3 to each element" )
+	//--></script>
+
+<p> For the question above, remember that <span class='code'>a[i]</span> is equivalent to <span
+class='code'>*(a+i)</span> . </p>
+
+<h4> Strings </h4>
+
+<script><!--
+	question( "Write your own <span class='code'>strlen</span> function, call it <span class='code'>myStrlen</span> .  " +
+						"Provide pre- and post-conditions for this function." )
+	//--></script>
+
+<p> Consider this alternative declaration: </p>
+
+<div class='file'>
+int myStrlen( char s[] ) ;
+</div>
+
+<script><!--
+	question( "Write your own <span class='code'>strcpy</span> function, call it <span class='code'>myStrcpy</span> .  " +
+						"Provide pre- and post-conditions for this function." )
+	//--></script>
+
+<p> Consider this alternative declaration: </p>
+
+<div class='file'>
+void myStrcpy( char t[], char s[] ) ;
+</div>
+
+<p> Remember, all of the C library functions are described in section 3 of the manpages, so: <p>
+
+<div class='cli'>
+	$ <b>man -s3 printf</b>
+</div>
+
+<p> might be helpful. </p>
+
+<p> Note that all lower-case letters are contiguous, as are the upper-case.  Remember that characters are really just
+	1-byte integers.  If we find the difference, we can use that to convert lower-case to upper-. </p>
+
+<div class='file'>
+<pre>int diff = 'a' - 'A' ;
+c = 'k' ;
+if( 'a'&lt;=c &amp;&amp; c&lt;='z' )   // then it's lower-case
+   c -= diff ;</pre>
+</div>
+
+<script><!--
+	q = "Write a <span class='code'>myToUpper</span> function, which modifies the array, in place, " 
+	q	+= "changing only the lower-case letters to upper case."
+	question( q )
+	//--></script>
+
+
+</body></html>

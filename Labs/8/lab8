@@ -1,0 +1,103 @@
+//Pratham Kwatra
+//Lab 8
+
+1.1) 
+	
+struct time sec2hms( int secs )
+{
+	struct time properTime;
+	properTime.hr = secs / 3600;
+	properTime.min = (secs % 3600) / 60;
+	properTime.sec = (secs % 3600) % 60;
+	while (properTime.hr > 23)
+		properTime.hr -= 24;
+	while (properTime.min > 59)
+		properTime.min -= 60;
+	return properTime;
+}
+
+1.2)
+void strcopy(char second[], char first[])
+{
+   int i, cnt = 0;
+   for (i = 0; *(first +i) != '\0'; ++i)
+   {
+      *(second + i) = *(first + i);
+      cnt++;
+   }
+   *(second + cnt) = '\0'; 
+}
+
+void readPeople( person* a[], FILE* f )
+{
+    char *buff = NULL ;
+    size_t len ;
+    size_t cnt = 0 ;
+    person *firstPerson;
+
+    while( getline( &buff, &len, f ) > 1 )
+    {
+        firstPerson = (person*) malloc (sizeof(person));
+        strcopy(firstPerson->last, buff);
+        getline( &buff, &len, f );
+        strcopy(firstPerson->first, buff);
+        getline( &buff, &len, f );
+        firstPerson->age = atoi(buff);
+        a[cnt] = firstPerson;
+
+    cnt ++;
+    }
+    free(buff);
+}
+
+1.3)
+
+void freePeople( person *a[], size_t n )
+{
+    int cnt=0;
+    while (cnt < n)
+    {
+        if  ( *(a+cnt) != NULL )
+            {
+                free (*(a+cnt));
+                *(a+cnt) = NULL;
+            }
+        cnt ++;
+    }
+
+}
+
+
+2.1)
+
+size_t listLength( const sNode *L )
+{
+   size_t cnt=0;
+   const sNode *cur = L;
+   while (cur != NULL)
+   {
+      cnt++;
+      cur = cur->next;
+   }
+   return cnt;
+}
+
+
+2.2)
+sNode* listRev( sNode *L )
+{
+	sNode* old=NULL;
+	sNode* cur= L;
+	sNode* nextNode;
+
+	while (cur != NULL)
+	{
+		nextNode = cur->next;
+		cur->next = old;
+		old = cur;
+		cur = nextNode;
+	}
+	L = old;
+	return L;
+}
+

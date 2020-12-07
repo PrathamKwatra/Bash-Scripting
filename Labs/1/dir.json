@@ -1,0 +1,11 @@
+{
+  "index" : "",
+    "required" : {
+      "files": [],
+      "directories" : []
+   },
+  "other" : {
+    "files": ["annoy.bash", "annoy.cc", "annoy_run", "funny", "hello.bash", "itemList", "itemList-2cols", "lab1", "TelecomTruths", "TEST", "UnitTestingPhase", "vi_lab"], 
+    "directories" : []
+    }
+}

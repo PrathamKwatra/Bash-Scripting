@@ -1,0 +1,112 @@
+//Activity 6
+//Pratham Kwatra
+
+Q1)
+#include <stdio.h>
+int star(int stars)
+{
+	int x_num=0, num=1;
+	for (num=1; num <= stars; num++)
+	{
+		for (x_num=num; x_num > 0; x_num--)
+		{
+			printf( "*" );
+		}
+		printf("\n");
+   }
+}
+
+int main()
+{
+	char *buff = NULL ;
+	size_t len = 0 , i = 0 ;
+	int givenNumber;
+	printf ("Enter a number --> ");
+	getline ( &buff, &len, stdin );
+	sscanf ( buff, "%d", &givenNumber );
+	//star(givenNumber);
+	while ( givenNumber > 0) 
+	{
+		star(givenNumber);
+		printf ("Enter a number --> ");
+		getline ( &buff, &len, stdin );
+		sscanf ( buff, "%d", &givenNumber );
+	}
+	free ( buff );
+	return 0 ;
+}
+
+
+
+Q2)
+#include <stdio.h>
+int rev_star(int stars)
+{
+	int space=stars, num=1, i , j;
+	for (num=1; num <= stars; ++num)
+	{
+		for (i=space; i > 0; i-- )
+			printf(" ");
+		for (j=num; j > 0; j--)
+			printf("*");
+		space -= 1;
+		printf("\n");
+	}
+}
+
+int main()
+{
+	char *buff = NULL ;
+	size_t len = 0 , i = 0 ;
+	int givenNumber;
+	printf ("Enter a number --> ");
+	getline ( &buff, &len, stdin );
+	sscanf ( buff, "%d", &givenNumber );
+	//star(givenNumber);
+	while ( givenNumber > 0) 
+	{
+		rev_star(givenNumber);
+		printf ("Enter a number --> ");
+		getline ( &buff, &len, stdin );
+		sscanf ( buff, "%d", &givenNumber );
+	}
+	free ( buff );
+	return 0 ;
+}
+
+
+Q3)
+#include <math.h>
+#include <stdio.h>
+#include <stdlib.h>
+
+
+int main()
+{
+	char *buff = NULL ;
+	size_t len ;
+	int i=0, cnt = 0 ;
+	double sum=0, mean=0, stand=0; 
+	float temp_float=0;
+	float array[100];
+
+	while( getline( &buff, &len, stdin ) > 1 )
+	{
+		sscanf( buff, "%f", &temp_float);
+		array[cnt] = temp_float;
+		cnt++;
+	}
+
+	printf( "\nEnd of input detected.  I read %d numbers.\n", cnt ) ;
+	for (i=0; i < cnt; i++)
+		mean += array[i];
+	mean = mean/cnt; 
+	for (i=0; i < cnt; i++)
+		sum += ( (array[i] - mean) * (array[i] - mean) );
+	sum = sum /cnt;
+	stand = sqrt(sum) ; 
+
+	printf("\nMean: %.2lf \t\t Standard Deviation: %.2lf\n", mean, stand);
+	free( buff ) ;
+	return 0 ;
+}

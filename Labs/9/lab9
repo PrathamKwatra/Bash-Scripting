@@ -1,0 +1,67 @@
+//Pratham Kwatra
+//Lab 9
+
+
+1.1)
+void stackResize( stack *s, size_t new_size )
+{
+	stack *copy = (stack*) malloc( sizeof( stack )) ;
+	assert( copy != NULL ) ;
+
+	copy->arr = (ELEM*) malloc( new_size * sizeof( ELEM )) ;
+	copy->size = 0 ;
+	copy->cap = new_size ;
+
+    //reversing the stack 
+    stack *reverse = mkStack();
+    while (!isEmpty(s))
+    { 
+        push(reverse, pop(s));
+    }
+
+    //copying the stack
+    while (!isEmpty(reverse))
+        push(copy, pop(reverse));
+
+    *s= *copy;
+}
+
+
+2.1)
+I got a segmentation fault. When I used ls -ot, I saw a new file called core in my directory. 
+
+2.2)
+Going by these results given by gdb(below), I would say the program bombed in the inTable() function which 
+was called by main.
+#1  0x000056244f00e416 in inTable ()
+#2  0x000056244f00e370 in main ()
+
+2.3)
+c) bug3.c  when tested with in.bug3 as input
+	The bug I found was related to SEGMENTATION FAULT when the value of i was 0 in function inTable. 
+	So I went back to see the creation of array and realized it was calling ++numlines before st[numlines] 
+	so st[0] was NULL. I changed the value of numlines to -1. 
+
+
+e)Labs/Dbg/Calc
+the calc did not understand 8 3 - 2 - =. This resulted in -5 -2 which gave back +7. So I configured it to only work in 
+positive integers. I did that by:
+	num = pop(&stack);
+	num2 = pop(&stack);
+	push(&stack, (num > num2) ? (num-num2) : (num2-num));
+rather than the previous statement which was written as:
+	push(&stack, pop(&stack) - pop(&stack));
+
+f)driverBug.c compiled with quicksortBug.c.
+
+I used the gdb and gcc -g to load the file. Then created the a breakpoint when the quickSort function is called. 
+Next, as more variables appeared I used gdb to display the values of those variables and i found that the value of last
+had some issues. So the basic assertions would be that last should be greater than to 0 but lesser than n or in this case 5.
+
+2.4)
+From my obersvations, the reason why the compiler cannot see the issue is because for the compiler 
+v1 or v2 are random numbers. Like in one of the steps v1 was 1431675664 and v2 was 1431675696.
+
+2.5)
+Segmentation Fault with file sort2i.c .
+

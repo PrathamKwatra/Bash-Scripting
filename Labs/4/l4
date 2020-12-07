@@ -1,0 +1,133 @@
+Pratham Kwatra, pk588
+CS265
+
+
+I am using grep to search
+ 
+Question 1.1)
+ grep 'the' Regexp/bright_side_of_life
+
+"Always Look on the Bright Side of Life"
+/* lathe */
+/* their */
+Other things just make you swear and curse.
+And this'll help things turn out for the best...
+	And...always look on the bright side of life...
+	Always look on the light side of life... 
+When you're feeling in the dumps
+Just purse your lips and whistle - that's the thing.
+    And...always look on the bright side of life...
+    Always look on the light side of life... 
+And Death's the final word
+You ust always face the curtain with a bow.
+Forget about your sin - give the audience a grin
+    So always look on the bright side of death
+Just remember that the last laugh is on you.
+    And always look on the bright side of life...
+    Always look on the right side of life...
+    Always look on the bright side of life...
+    Always look on the bright side of life...
+    Always look on the bright side of life...
+    Always look on the right side of life...
+
+question 1.2) results with command grep -w 'the' Regexp/bright_side_of_life 
+
+"Always Look on the Bright Side of Life"
+And this'll help things turn out for the best...
+	And...always look on the bright side of life...
+	Always look on the light side of life... 
+When you're feeling in the dumps
+Just purse your lips and whistle - that's the thing.
+    And...always look on the bright side of life...
+    Always look on the light side of life... 
+And Death's the final word
+You ust always face the curtain with a bow.
+Forget about your sin - give the audience a grin
+    So always look on the bright side of death
+Just remember that the last laugh is on you.
+    And always look on the bright side of life...
+    Always look on the right side of life...
+    Always look on the bright side of life...
+    Always look on the bright side of life...
+    Always look on the bright side of life...
+    Always look on the right side of life...
+
+question 1.3) search results grep 'Just' bright_side_of_life
+
+Just purse your lips and whistle - that's the thing.
+    Just before you draw your terminal breath
+Just remember that the last laugh is on you.
+
+question 1.4) search results grep -i 'Just' bright_side_of_life
+
+Other things just make you swear and curse.
+Just purse your lips and whistle - that's the thing.
+    Just before you draw your terminal breath
+Just remember that the last laugh is on you.
+
+Question 1.5) search results egrep -i "^Just" bright_side_of_life
+
+Just purse your lips and whistle - that's the thing.
+Just remember that the last laugh is on you.
+
+Question 1.6) search results egrep -w '(mad|bad)' bright_side_of_life
+
+Some things in life are bad
+They can really make you mad
+
+Question 1.7) Search results for egrep '(breath|death)' bright_side_of_life
+
+    So always look on the bright side of death
+    Just before you draw your terminal breath
+Life's a laugh and death's a joke, it's true.
+
+Question 1.8) Search results for grep you[.,] bright_side_of_life
+
+Just remember that the last laugh is on you.
+
+Question 1.9) Search results for egrep  ? bright_side_of_life
+
+            
+    And...always look on the bright side of life...
+    Always look on the light side of life... 
+    So always look on the bright side of death
+    Just before you draw your terminal breath
+    And always look on the bright side of life...
+    Always look on the right side of life...
+    (Come on guys, cheer up!)
+    Always look on the bright side of life...
+    Always look on the bright side of life...
+    (Worse things happen at sea, you know.)
+    Always look on the bright side of life...
+    (I mean - what have you got to lose?)
+    (You know, you come from nothing - you're going back to nothing.
+    What have you lost? Nothing!)
+    Always look on the right side of life...
+
+Question 1.10) search results for egrep ^ bright_side_of_life 
+
+3:
+10:
+13:
+20:
+23:
+30:
+33:
+39:
+42:
+49:
+61:
+
+Question 1.11) Search Results for egrep -c ^ bright_side_of_life
+
+11
+
+
+
+Question 3.1) SHA-ID f88323b0296c2e56238eee9847f6ea3df3f7df06
+
+Question 3.2) git reset - this resets the current HEAD at a state specified by the user and git reset --hard 
+resets the index and working tree, which causes any changes to tracked files ince last commit to disapear. It basically reverts everything back to the last commit. 
+
+Question 3.3)git checkout dabc8d2 -- marlin 
+

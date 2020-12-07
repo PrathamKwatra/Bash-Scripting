@@ -1,0 +1,38 @@
+//Pratham Kwatra
+//Activity 8
+
+q1) 
+
+
+sNode* removeOne( sNode *L, int t )
+{
+   sNode *p = L , *q = NULL ;
+   //check for 1st node
+   if (p->data == t)
+      { 
+          printf("\n%d\n", p->data);
+          q = p->next;
+          free(p);
+          p = NULL;
+          return q; 
+      }
+   q = p;
+   p = p->next;
+   while( p!=NULL )
+   {
+      if( p->data == t )
+         q->next = p->next;
+         free(p);
+         p = NULL;
+         return L ;
+      q = p ;
+      p = p->next ;
+   }
+
+   //if( p == NULL ) return NULL ;
+   return NULL;
+   // TODO:  unhook that element
+}
+
+
+

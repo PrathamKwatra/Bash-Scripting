@@ -1,0 +1,11 @@
+{
+  "index" : "",
+    "required" : {
+      "files": [],
+      "directories" : []
+   },
+  "other" : {
+    "files": ["breadIsDangerous.txt", "lab2", "lab2.bak", "list", "man.ls", "numbers", "result", "spellExample", "spellExample.bak", "who.command"], 
+    "directories" : ["Tmp"]
+    }
+}

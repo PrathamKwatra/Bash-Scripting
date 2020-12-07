@@ -1,0 +1,83 @@
+Lab 2
+Name Pratham Kwatra
+Email pratham.kwatra@tux.cs.drexel.edu
+
+Question 1
+
+	./Labs/Lab2/man.ls
+	./Labs/Lab2/Tmp/gotMe.bash
+	./Labs/Lab2/who.command
+	./Labs/Lab2/list
+	./Labs/Lab2/lab2
+	./Labs/Lab2/result
+
+Question 2
+	
+	find . -type f -name "*.bash" 
+
+Question 3
+	
+	499 breadIsDangerous.txt
+
+Question 4
+	499
+
+Question 5 
+	ls -1 | wc -l 
+	//Result for me 46
+
+Question 6 
+
+	grep bread breadIsDangerous.txt
+	
+Question 7 
+
+	grep the breadIsDangerous.txt | wc -l
+
+Question 8  
+
+	there is now a backup file of spellExample called spellExample.bak
+
+Question 9 
+
+	the differences are present line by line, and how many differences are there. such as 3c3 would represent 3 characters are different, I presume
+
+Question 10 
+
+	it did not print any results for me, maybe becuase there were no differences
+
+Question 11 
+	I thought it would sort the numbers but its was not what i expected it gives me this -
+	1
+	15
+	17
+	20
+	24
+	26
+	28
+	29
+	6
+	9
+
+Question 12 
+	
+	They were sorted properly this time
+
+Question 13 
+	
+	it sorted the files by the size of the file in descending order
+
+Question 14 
+	
+	du * | sort -n -r | head -n8
+
+Question 15
+	
+	These numbers are the exit status on grep. 0 represents line selected, 1 represents no line selected and 2 if an error occured
+
+Question 16
+	
+	File breadIsDangerous.txt has 499 words
+
+Question 17 
+	echo "The current directory is: $(pwd)" 

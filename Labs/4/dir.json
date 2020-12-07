@@ -1,0 +1,11 @@
+{
+  "index" : "",
+    "required" : {
+      "files": [],
+      "directories" : []
+   },
+  "other" : {
+    "files": ["l4"], 
+    "directories" : ["act4", "Anagram", "Regexp", "test_lab"]
+    }
+}

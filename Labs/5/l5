@@ -1,0 +1,39 @@
+#Pratham Kwatra
+#CS 270 03B
+#Lab 5 Intro to C
+
+Question 1) I saw that with the gcc compiler I get:
+			Globals:  gi is 0, and gx is 0.000000
+			Locals:  i is 32765, and x is 0.000000
+and with tcc:
+	Globals:  gi is 0, and gx is 0.000000
+	Locals:  i is 0, and x is 0.000000
+The value of local I has changed from 0 to 32765 in gcc for me. I expected both tcc and gcc to have the same output 
+
+Question 2) bills.c
+
+Question 3) Results of the evaluated expression
+ 		i j
+ a)	8 3
+ b)	3 4
+ c) 	4 4
+ d)	5 3 and 2 is the result of i % j 
+ e)	5 4 and 2 is the result of i % j++
+
+Question 4) 
+	getchar is called like this:
+		ch = getchar()
+		while snanf worls like this 
+		scanf ( "%c" , $ch)
+		getchar also works faster than scanf in some aspects since it is much simpler.
+		Lastly, getchar(), reads one character, and returns it.
+		To save that character we need to use a variable. 
+		Moreover, scanf has a tendency to leave behind charcters it has peeked at but not read, 
+		including new line charcter. This causes an issue when getchar and scanf are used in the sames script
+
+
+Question 5)
+				Completed using tcc
+				The result will be x = 0.000, y = 0.0000 and i = 45
+				when compiled using gcc
+				The result will be an error during compilation

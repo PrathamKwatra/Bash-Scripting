@@ -1,0 +1,11 @@
+{
+  "index" : "",
+    "required" : {
+      "files": [],
+      "directories" : []
+   },
+  "other" : {
+    "files": ["act4", "s1-num"], 
+    "directories" : ["act_4"]
+    }
+}

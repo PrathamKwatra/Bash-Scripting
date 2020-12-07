@@ -1,0 +1,83 @@
+this is lab1 
+tux has input lag xP
+
+Question 1:
+Made some random edits to the vi_lab file
+
+Question 2:
+Pressing Escape on the command line, was similar to entering a Command mode on Vim. 'k' 'k' after the esc, displayed the above commands, while 'w' 'w' moved 
+the cursor to the right, a put me back on insert mode. 
+
+Question 3:
+So i entered the command mode again and this time k k took me to the second last command and w moved the cursor towards
+the right. ~ when i pressed this on the command : vi lab1 it changed the commmand to vi Lab1 which was the name for
+my directory. Enter the activated the command.
+
+Well, at a second try for this question I understood that ~ actually Capitalized the character the cursor was on.
+
+Question 4:
+I see the read, write, and execute permission on the left hand side of the files available in that folder/directory.
+
+
+
+
+Question 5:
+I just gave the group and other users the permission to read my file while the user has read and write permissions.
+The user does not have execution permission to some_file
+
+Question 6:
+I just gave other and group users the permission to read and write the file but they cannot execute that file. 
+While I as the user can read, write, and execute that file.
+
+Question 7:
+yes i can read my funny file
+Question 8:
+yes i can read my hello.bash file
+
+Question 9:
+No I was not able to execute the file
+Question 10:
+chmod 700
+chmod 755
+both of them provide me execution rights. maybe sudo should also work since that would make me the admin.
+Question 11:
+No i was not able to write the file. I had to forcefully write the file using :wq! in vim.
+
+Question 12:
+ls * - displayed all the results
+ls a* - displayed all the results with a as their first letter (annoy annoy.c)
+ls *m* - displayed all the results with m in their name (telecom file, itemList, itemList-2cols)
+ls anno? - displayed all the results with anno as their first 4 letters (only the annoy file not annoy.cc)
+ls annoy? - did not display any results
+
+Curiously speaking the * displayed all the results but the ? did display results which had . in their name. 
+Could not conclude the reason why this happend. 
+
+Question 13:
+It created to different files to edit. And I had to refer to ViTutor to figure out how to switch between the two files. 
+Just gave up and :q!
+
+Question 14:
+ls -h:
+--human-readable
+	with -l and -s, print sizes like 1k, 234M 2G etc.
+
+ls -l: 
+use a long listing format
+
+ls -t:
+sort by modification time, newest first
+
+ls -A;
+--almost-all
+	shell PATTERN (overrriden by -a or -A)
+
+
+ls -d;
+--directory
+
+Name: Pratham Kwatra
+
+
+
+UniID: 14375328

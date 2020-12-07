@@ -1,0 +1,11 @@
+{
+  "index" : "",
+    "required" : {
+      "files": [],
+      "directories" : []
+   },
+  "other" : {
+    "files": ["Lol.mp3"], 
+    "directories" : ["This", "is", "also", "music.mp3", "This", "is", "Music.mp3"]
+    }
+}

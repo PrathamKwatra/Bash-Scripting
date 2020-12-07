@@ -1,0 +1,123 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<html>
+<head>
+	<meta http-equiv="Content-Language" content="en-us">
+	<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+	<meta http-equiv="Expires" content="no-expire">
+	<meta name="Author" content="Kurt Schmidt"><meta name="Copyright" content="">
+	<meta name="Publisher" content="Drexel University">
+	<meta name="Keywords" content="Programming Techniques Unix">
+	<meta name="Description"
+		content="Lab for CS265 - Adv. Programming Techniques">
+	<meta name="Pagetype" content="Lab">
+	<meta name="Audience" content="All">
+	<link rel='shortcut icon' type='image/gif'
+		href='../../../images/drexel.gif'></link>
+	<script language="JavaScript" src="../../courseInfo.js"></script>
+	<script language="JavaScript" src="../../../Scripts/courseFormat.js"></script>
+	<title> Lab - Regular Expressions </title>
+	<link href="../labs.css" rel="stylesheet" type="text/css">
+</head>
+
+<body text="#330099" link="#000066" vlink="#000066" alink="#ff0000"
+	background="../../../images/blueTexture.jpeg">
+
+<h1> Lab - Regular Expressions </h1>
+
+<p kurt='fool'> The directory for this lab is <span class='fn'>~kschmidt/public_html/CS265/Labs/Regexp</span> . </p>
+
+<h3> Introduction </h3>
+
+<p>  For this lab you will supply regular expressions that return the requested matches.  You may test your answers out
+on the input file <span class='fn'>bright_side_of_life</span> . </p>
+
+<p flavor='chocolate'> I would recommend <span class='cmd'>egrep</span> (<span class='cmd'>grep -E</span>).  Utilities
+implement REs slightly differently.  In some, special (meta-) characters that we've discussed have their special
+behavior, and must be escaped for the literal.  In others (like <span class='cmd'>grep</span> and <span
+class='cmd'>vim</span>), some of the meta-characters, by default, are literal, and must be escaped to invoke their
+special meanings. </p>
+
+<p>  So, for example, if I want to print all lines that contain the string <span class='str'>kurt</span> in the file
+<span class='fn'>bright_side_of_life</span>, it would look like this: </p>
+
+<div class='cli'>
+	$ <b>egrep 'kurt' bright_side_of_life</b>
+</div>
+
+<p> You could use AWK to do this: </p>
+
+<div class='cli'>
+	$ <b>awk '/kurt/' bright_side_of_life</b>
+</div>
+
+<p>  Or in sed: </p>
+
+<div class='cli'>
+	$ <b>sed -n '/kurt/p' bright_side_of_life</b>
+</div>
+
+<p>  Whichever way you go,  please use the same for all questions in the lab, and specify above question 1, quite
+clearly, which you used .  Otherwise, it'll be assumed you used <span class='cmd'>grep</span>. </p>
+
+<p>  Note that <span class='cmd'>egrep</span> is just <span class='cmd'>grep -E</span>, using extended regular
+expressions. </p>
+
+<h3> Instructions/Questions </h3>
+
+<p>  For each of the following questions, provide a regular expression that returns the requested matches. </p>
+
+<script><!--
+	question( "Match all lines that contain the string <span class='str'>the</span>" )
+	//--></script>
+
+<script><!--
+	question( "Match all lines that contain the <u>word</u> <span class='str'>the</span> (not as a substring " +
+						"of a larger word)" )
+	//--></script>
+
+<p> <b>Hint:</b>  <span class='cmd'>awk</span> (and <span class='cmd'>grep</span> and <span class='cmd'>vim</span>) all
+use <span class='cmd'>\&lt;</span> and <span class='cmd'>\&gt;</span> as word anchors (beginning and end, respectively);
+<span class='cmd'>awk</span> doesn't understand the <span class='cmd'>\b</span> that <span class='cmd'>vim</span> does.
+</p>
+
+<script><!--
+	question( "Match all lines that contain the word <span class='str'>Just</span> ." )
+	//--></script>
+
+<script><!--
+	question( "Match all lines that contain <span class='str'>Just</span> or <span class='str'>just</span> ." )
+	//--></script>
+
+<script><!--
+	question( "Match all lines that start w/the word <span class='str'>Just</span> or <span class='str'>just</span> ." )
+	//--></script>
+
+<script><!--
+	question( "Match all lines that contain the word <span class='str'>bad</span> or <span class='str'>mad</span> ." )
+	//--></script>
+
+<script><!--
+	question( "Match all lines that contain the word <span class='str'>death</span> or " +
+						"<span class='str'>breath</span> ." )
+	//--></script>
+
+<script><!--
+	question( "Match all lines that end with <span class='str'>you</span> .  Trailing puncuation is acceptable " +
+						"(so, possibly followed by a period or a comma) ." )
+	//--></script>
+
+<script><!--
+	question( "Match lines that have leading whitespace. " )
+	//--></script>
+
+<script><!--
+	question( "Match blank lines." )
+	//--></script>
+
+<script><!--
+	question( "How many are there?" )
+	//--></script>
+
+<p> [what'd he say?] </p>
+
+</body></html>

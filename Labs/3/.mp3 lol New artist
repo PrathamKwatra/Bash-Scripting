@@ -1,0 +1,41 @@
+Pratham Kwatra
+Lab3
+CS 265 03B
+
+Question 1
+	[[ 13 < 2 ]] && echo true . this command is like an if - then statement without else. if 13 < 2 then you echo true 
+
+Question 2
+	if grep chocolate mySettings &>/dev/null ; then
+   	echo All we have to decide is what to do with the chocolate that is given us...
+	fi. 
+	Now in this command the output is simply the echo All...given us... because in Labs directory the file mySettings had the word chocolate in it. Secondly this &>word command works like this >>word 2>&1. and fi completed the if statement.
+
+Question 3
+	x=13, echo $(( x/5)). Results in 2. So this is because bash is using integers and therefore an integer is provided back when 13 / 5 rather than a float. Also the two brackets help tell echo to evaluate the expression inside otherwise it will either directly just say 13/5 or think its the name of some file/dir/person/alias
+
+Question 4
+	
+	(( 27 % 2 == 1 )) echo $? returns 0 which means true since (( 28 % 2 == 1)) returned 1. After some reading turns out it is returning the exit status of the last command
+
+Question 5
+	unset x, (x = 12; echo 5 $x 13), echo 5 $x 13. The unset command removed the previously set value of x. The second command locally set the value of to 12 (locally is referring to expressions in that () ) while for the next echo command referred to the global value of x which was unset so bash printed a blank space. Also the output for the second command was 5 12 13 and for the third command 5 13 
+
+Question 6
+	Result for the loop:
+		Item
+		Another
+		Item
+ 	for item in $(cat blah) ; do echo $item ; done : This loop takes every word as an element in blah and prints out each of them in a newline
+
+Question 7
+ 	cat blah | while read item ; do echo $item ; done : This loop happened twice since cat printed out each line as an element and while read those lines and printed them out as it is. 
+	Result of the loop: 
+	Item 
+	Another Item 
+ Question 8
+ Result of the loop:
+Item
+Another Item 
+This was the output for the expression - while read item ; do echo  ; done < blah 
+

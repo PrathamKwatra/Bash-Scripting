@@ -1,0 +1,238 @@
+<!DOCTYPE doctype PUBLIC "-//w3c//dtd html 4.0 transitional//en">
+<html>
+<head>
+	<meta http-equiv="Content-Language" content="en-us">
+	<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+	<meta http-equiv="Expires" content="no-expire">
+	<meta name="Author" content="Vera Zaychik & Kurt Schmidt">
+	<meta name="Publisher" content="Drexel University">
+	<meta name="Copyright" content="">
+	<meta name="Keywords" content="awk unix pipe filter script">
+	<meta name="Description"
+		content="Lab for CS265 - Adv. Programming Techniques">
+	<meta name="Pagetype" content="Lab">
+	<meta name="Audience" content="All">
+	<link rel='shortcut icon' type='image/gif'
+		href='../../images/drexel.gif'></link>
+	<script language="JavaScript" src="../../courseInfo.js"></script>
+	<script language="JavaScript" src="../../../Scripts/courseFormat.js"></script>
+	<title>Lab -- Starting on Unix - finding Anagrams</title>
+	<link href="../labs.css" rel="stylesheet" type="text/css">
+</head>
+
+<body text="#330099" link="#000066" vlink="#000066" alink="#FF0000"
+	background="../../../images/blueTexture.jpeg">
+
+<h1> Lab &ndash; Finding Anagrams </h1>
+
+<p> The directory for this lab is <span class='fn'>tux:/home/kschmidt/public_html/CS265/Labs/Anagram</span> . </p>
+
+<p> In this lab we'll be exploring the UNIX philosophy of combining simple programs using pipes can solve an
+interesting problem. </p>
+
+<p> You will use some common *nix utilities, and a few small custom-written pieces (one of which you need to write).
+You will provide a single script to pull all of this together. </p>
+
+<h2> Problem Statement </h2>
+
+<p> Write a Bash script called <span class='fn'>anagram</span> which finds the 8 largest anagram classes in the system
+dictionary, <span class='fn'>/usr/share/dict/words</span>. </p>
+
+<p> Two words are anagrams if one can be obtained from the other by permuting the letters.  For example, the words stop
+and pots are anagrams since the letters "s", "t", "o", and "p" in "stop" can be rearranged to obtain the word "pots".
+</p>
+
+<p> For example, if the input looked like this: </p>
+
+<div class='file'>
+<pre>hat
+at
+flat
+snap
+yap
+pay
+what
+meat
+cat
+paper
+team
+lager
+rat
+tar
+large
+tame</pre>
+</div>
+
+<p> , and if we'd asked for the top 4 classes, the output would look something like this: </p>
+
+<div class='output'>
+<pre>3 meat tame team
+2 yap pay
+2 rat tar
+2 lager large</pre>
+</div>
+
+
+<h2> Strategies </h2>
+
+<h3> Naive Attempt </h3>
+
+<p> A naive way to test if two words are anagrams is to produce all permutations of the letters of one of the words and
+compare each possible permuted sequence of letters to the other word.  If any sequence is equal to the other word then
+they are anagrams.  For example, to determine if "ant" and "tan" are anagrams, we first generate the six possible
+permutations of the letters in ant: </p>
+
+<div class='file'>
+<pre>ant
+atn
+nat
+nta
+tan
+tna</pre>
+</div>
+
+<p> and compare each to tan.  Since the 5th permuted sequence is equal to tan, ant and tan are anagrams. </p>
+
+<p> The problem with this approach is that as the number of letters increases, the number of permuted sequences gets
+big.  For example, there are 3,628,800 permutations of a 10 letter word, and we'd need to do that for each pair of
+words (n!). </p>
+
+<h3> Finding a Cardinal Representation of Each Word </h3>
+
+<p> A better approach to test if two words are anagrams is to sort the letters in each word and then compare these
+cardinal representations.  If the words are anagrams then they must have the same letters, and if they have the same
+letters then they are anagrams.  For example, if we sort the letters in "stop" and "pots" we obtain the letter sequence
+"opts" for both words, which shows that they are anagrams. </p>
+
+<ol>
+	<li> For each word in the file sort the letters to produce a key. </li>
+	<li> Sort all of the words in the input file by their key. </li>
+	<li> In the sorted list find all adjacent words with the same key (these are the anagram classes). </li>
+</ol>
+
+<h2> Tools </h2>
+
+<p> The following programs are available for you to use (except one, which you'll have to write yourself). You may also
+use any other Unix utilities. Your task is to combine these tools in a single Bash script using pipes and/or
+redirects. </p>
+
+<p> While developing, do one piece at a time, use redirection to build a piece, then use a pipe to hook it in to the
+previous piece, and test. </p>
+
+<p> Your final solution should not write any temporary files. </p>
+
+<ol>
+	<li> A C program called <span class='fn'>sign.c</span>. It reads a file of words (one per line) from stdin. For every
+		word, it'll print to <span class='fn'>stdout</span> the word sorted by letters, followed by a space, followed by
+		the original word.
+
+		<p> For example, if the file <span class='fn'>temp</span> looked like this: </p>
+
+		<div class='file'>
+<pre>cat
+pat
+attack
+tap</pre>
+		</div>
+
+		<p> then  </p>
+		
+		<div class='cli'>$ ./sign &lt; temp</div> 
+		
+		<p> should output: </p>
+
+		<div class='output'>
+<pre>act cat
+apt pat
+aacktt attack
+apt tap</pre>
+		</div>
+
+		<p> You'll need to compile <span class='fn'>sign.c</span> into an executable to run it. You can do this by running
+		the C compiler <span class='cmd'>gcc</span>. By default, <span class='cmd'>gcc</span> creates an executable named
+		<span class='cmd'>a.out</span>. If you want to provide a different output filename, you can use the <span
+		class='cmd'>-o</span> flag (see the gcc manpage for more details). </p> 
+	</li>
+
+	<li> The <span class='cmd'>sort</span> utility, which sorts its input. Remember that you can also sort numerically by
+	using the <span class='cmd'>-n</span> flag.</p>
+	</li>
+
+	<li> An awk program called <span class='cmd'>squash.awk</span>, which will put all <strong>adjacent</strong> lines
+	with the same first field onto the same line, space separated. For example, given the file <span
+	class='fn'>temp</span> with these contents: 
+
+		<div class='file'>
+<pre>aacktt attack
+act cat
+apt pat
+apt tap</pre>
+		</div>
+
+		<p> Running </p>
+		
+		<div class='cli'>$ awk -f squash.awk &lt; temp</div>
+		
+		<p> will output: </p>
+
+		<div class='output'>
+<pre>attack
+cat
+pat tap</pre>
+		</div>
+	</li>
+
+	<li> You will write an <span class='cmd'>awk</span> program that counts the number of space-separated words on a
+		line. For example, given this input:
+
+		<div class='file'>
+<pre>rat
+tap pat
+glare lager large regal
+leap pale peal
+meat tame team</pre>
+		</div>
+
+		<p> your awk program should output: </p>
+
+		<div class='output'>
+<pre>1 rat
+2 tap pat
+4 glare lager large regal
+3 leap pale peal
+3 meat tame team</pre>
+		<div>
+	</li>
+
+	<li> The <span class='cmd'>head</span>/<span class='cmd'>tail</span> utilities, which print the first/last <span
+	class='cmd'>n</span> lines of their input.</p>
+
+
+<h2> Submission </h2>
+
+<p> Your submission must include a Bash script named <span class='fn'>anagram</span>.  This is the top-level script
+that orchestrates your solution.  It's the script we will call to see the magic happen. </p>
+
+<p> We will invoke your script directly, so get the sha-bang right. </p>
+
+<p> Your script must include a command to compile <span class='fn'>sign.c</span>. It will not be compiled for you. </p>
+
+<p> Your top-level script will put this all together; it'll check for the needed files, compile the C program (and
+anything else you need to have done), and put it all together, to print (to the screen) the required anagram classes.
+</p>
+
+<p> We will provide <span class='fn'>sign.c</span> and <span class='fn'>squash.awk</span> .  If you submit them, they
+will be overwritten. </p>
+
+<p> We will provide <span class='fn'>sign.c</span> and <span class='fn'>squash.awk</span> .  If you submit them, they
+will be overwritten. </p>
+
+<ul>
+	<li> <span class='fn'>anagram</span> - Your top-level Bash script, the one we run to get the output. </li>
+	<li> Any other files required, directly or indirectly, by your script (except for the dictionary itself). </li>
+	<li> <span class='fn'>README</span> <i>(optional)</i> - anything you want to tell us before we grade. </li>
+</ul>
+
+</body>
+
+</html>

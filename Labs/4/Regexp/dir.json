@@ -1,0 +1,11 @@
+{
+  "index" : "",
+    "required" : {
+      "files": [],
+      "directories" : []
+   },
+  "other" : {
+    "files": ["bright_side_of_life", "bright_side_of_life.lower", "find.out", "index.html"], 
+    "directories" : []
+    }
+}

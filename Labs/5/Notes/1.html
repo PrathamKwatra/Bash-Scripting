@@ -1,0 +1,190 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<html>
+<head>
+	<meta http-equiv="Content-Language" content="en-us">
+	<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+	<meta http-equiv="Expires" content="no-expire">
+	<meta name="Author" content="Kurt Schmidt"><meta name="Copyright" content="">
+	<meta name="Publisher" content="Drexel University">
+	<meta name="Keywords" content="Programming Techniques Unix">
+	<meta name="Description"
+		content="Lab for CS265 - Adv. Programming Techniques">
+	<meta name="Pagetype" content="Lab">
+	<meta name="Audience" content="All">
+	<link rel='shortcut icon' type='image/gif'
+		href='../../../images/drexel.gif'></link>
+	<script language="JavaScript" src="../../courseInfo.js"></script>
+	<script language="JavaScript" src="../../../Scripts/courseFormat.js"></script>
+	<title> Lab -- C Language, Intro </title>
+	<link href="../labs.css" rel="stylesheet" type="text/css">
+</head>
+
+<body text="#330099" link="#000066" vlink="#000066" alink="#ff0000"
+	background="../../../images/blueTexture.jpeg">
+
+<h1> Lab &ndash; Intro to C </h1>
+
+<p kurt='fool'> The directory for this lab is <span class='fn'>~kschmidt/public_html/CS265/Labs/C</span> . </p>
+
+
+<h3> Introduction </h3>
+
+<p> Just gonna play around a bit, write a couple programs. </p>
+
+<p> We will test your code using the <span class='cmd'>gcc</span> compiler. </p>
+
+<!-- TODO -->
+
+<h3> The Exercises </h3>
+
+<ol>
+	<h4> Compilers </h4>
+
+	<li> <span class='cmd'>gcc</span> has many non-standard extensions.  <span class='cmd'>clang</span>  and <span
+		class='cmd'>tcc</span> are closer. 
+
+		<p> Copy <span class='fn'>sphere.c</span> and <span class='fn'>sphere-pow.c</span> to your directory.  Note the call
+		to <span class='code'>atan</span> in bot files.  See the difference between the 2 files: </p>
+
+<div class='cli'>
+	$ <b>diff sphere{,-pow}.c</b>
+</div>
+
+		<p> Compile <span class='fn'>sphere.c</span> with <span class='cmd'>gcc</span>: </p>
+
+<div class='cli'>
+	$ <b>gcc sphere.c -o sphere</b>
+</div>
+
+		<p> Now compile <span class='fn'>sphere-pow.c</span> with <span class='cmd'>gcc</span>: </p>
+
+<div class='cli'>
+	$ <b>gcc sphere-pow.c -o sphere</b>
+</div>
+
+<div class='output'>
+<pre>/tmp/ccj8YBDC.o: In function `main':
+sphere-pow.c:(.text+0x9e): undefined reference to `pow'
+collect2: error: ld returned 1 exit status</pre>
+</div>
+
+		<p> This is a linker error, not a compiler error. </p>
+		<ul>
+			<li> Doesn't refer to a line # </li>
+			<li> Mentions an object (<span class='code'>.o</span>) file (this is a temporary one) <?li>
+			<li> It tells you so:  "ld [the linker] returned..."
+		</ul>
+
+		<p> To speed things up the linker doesn't search <em>every</em> library.  So, in this example we need to use the
+		<span class='code'>-lm</span> linker option, to tell it to search the <span class='fn'>libm.so</span> or <span
+		class='fn'>libm.a</span> library.  As a linker option it should appear later in the line: </p>
+
+<div class='cli'>
+	$ <b>gcc sphere-pow.c -o sphere -lm</b>
+</div>
+
+		<p> To be faster, <span class='cmd'>tcc</span> doesn't call <span class='cmd'>ld</span>; it does the linking itself.
+		<span class='cmd'>tcc</span> won't find <span class='code'>atan</span> without help: </p>
+
+<div class='cli'>
+	$ <b>tcc sphere-pow.c -o sphere -lm</b>
+</div>
+	</li>
+
+	<li>
+		<p> Copy <span class='fn'>uninit.c</span>, look at the code.  Compile with <span class='cmd'>gcc</span>, run it a
+		few times.  Do the same with <span class='cmd'>tcc</span>, 
+
+<script><!--
+	question( "What did you observe?  What did you expect?" )
+	//--></script>
+
+		<p> In short, do not rely on default values.  Initialise your variables. </p>
+	</li>
+
+	<li>
+		<p> Write a C program that prompts the user for an integer, then shows how to represent that amount with the fewest
+		number of $20, $10, $5, and $1 bills. </p>
+		
+		<p> Use the <span class='code'>getline</span> / <span class='code'>sscanf</span>
+		strategy discussed in this week's activity.  You may not use an <span class='code'>if</span> statement.  Integer
+		division and modulus will get you where you need. </p>
+
+		<p> Here is a sample run: </p>
+
+<div class='output'>
+<pre>Enter a dollar amount =&gt; 378
+
+$20 bills:  18
+$10 bills:   1
+$ 5 bills:   1
+$ 1 bills:   3</pre>
+</div>
+
+		<p> Get the columns of numbers to line up nicely, as shown. </p>
+
+		<script><!--
+			question( "Call this <span class='fn'>bills.c</span> and submit it." )
+			//--></script>
+	</li>
+	
+	<li>
+		<p> [From King text] Assume, for each of the following expressions, that, initially, <span class='code'>i</span> has
+			the value 5 and <span class='code'>j</span> has value 3.  </p>
+		<ol type='a'>
+			<li> <span class='code'> i += j </span> </li>
+			<li> <span class='code'> i = j++ </span> </li>
+			<li> <span class='code'> i = ++j </span> </li>
+			<li> <span class='code'> i % j </span> </li>
+			<li> <span class='code'> i % j++ </span> </li>
+		</ol>
+
+		<script><!--
+			q = "For each expression, above, show the final values for <span class='code'>i</span> "
+			q += "and <span class='code'>j</span> "
+			question( q )
+			//--></script>
+	</li>
+
+	<li>
+		<script><!--
+			q = "From chapter 7, what is the difference between using <span class='code'>getchar</span> "
+			q += "and <span class='code'>scanf</span> with the <span class='code'>%c</span> specifier "
+			q += "to read a single character?"
+			question( q )
+			//--></script>
+	</li>
+
+	<li>
+		<p> [From King text] Suppose we call <span class='code'>scanf</span> as follows: </p>
+<div class='code'>
+	scanf( "%f%d%f", &amp;x, &amp;i, &amp;y ) ;
+</div>
+		<p>, where <span class='code'>x</span> and <span class='code'>y</span> are <span class='code'>double</span>
+		variables, and <span class='code'>i</span> is an <span class='code'>int</span> . </p>
+
+<div class='input'>
+	12.3 45.6 789
+</div>
+
+		<script><!--
+			q = "Given the input, above, "
+			q += "what will the  values of <span class='code'>x</span>, <span class='code'>y</span>, and  "
+			q += "<span class='code'>i</span> be?"
+			question( q )
+			//--></script>
+	</li>
+
+	<li>
+		<p> Write a program for innumerate lunchers.  Given an amount, compute the 7% tax, and compute a 22% tip (on the
+		original, untaxed, amount).  Print out the user's liability. </p>
+		
+		<p> Prompt for the subtotal (as a <span class='code'>double</span>).  Remember to print the money amount with 2
+		places after the radix. </p>
+
+		<script><!--
+			q = "Calls this source code <span class='fn'>ipay.c</span> and submit it with your lab."
+			question( q )
+			//--></script>
+
+</body></html>

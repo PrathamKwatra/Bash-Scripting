@@ -1,0 +1,11 @@
+{
+  "index" : "",
+    "required" : {
+      "files": [],
+      "directories" : []
+   },
+  "other" : {
+    "files": ["count.bash", "lab3", "lab3.bak", "oldCount", "organiseMusic", "reextend", "SecondDraftcount.bash", "testOrgMus"], 
+    "directories" : ["Lol", "New", "Artist"]
+    }
+}

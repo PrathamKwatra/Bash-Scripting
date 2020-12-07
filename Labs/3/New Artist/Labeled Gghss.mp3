@@ -1,0 +1,9 @@
+total 6
+0 drwxrwxr-x 2 pk588 pk588    6 Oct  9 20:22 .
+0 drwxrwxr-x 5 pk588 pk588    4 Oct  5 14:14 ..
+1 -rw-rw-r-- 1 pk588 pk588   20 Oct  8 18:37 blah
+1 -rwx--x--x 1 pk588 pk588  596 Oct  9 20:21 count.bash
+1 -rw-rw-r-- 1 pk588 pk588   35 Oct  8 21:33 filenames.txt
+3 -rw-rw-r-- 1 pk588 pk588 2058 Oct  8 20:13 lab3
+0 -rw-rw-r-- 1 pk588 pk588    0 Oct  9 20:22 ls.log
+1 -rwx--x--x 1 pk588 pk588  944 Oct  9 20:02 oldCount.bash

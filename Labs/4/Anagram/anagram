@@ -1,0 +1,28 @@
+#!/bin/bash 
+#
+# Pratham Kwatra
+# 18/10/2020 [DATE/MONTH/YEAR]
+# 
+# Platform: Linux tux1 5.4.0-48-generic #52-Ubuntu SMP Sat Oct 18 11:48:39 UTC 2020 x86_64 x86_64 x86_64 GNU/Linux
+# 
+# EDITOR: tabs=3, cols=120 (checked with echo $COLUMNS)  
+#	
+# anagram
+
+debugOn="n"
+
+read -p "Do you want to see the script as it executes? (y/[n]) => " \
+   debugOn
+if [ "$debugOn" == "y" -o "$debugOn" == "Y" ] ; then
+	set -x      # very useful switch to the set command
+fi
+
+echo "Hello $USER"
+
+gcc -o sign sign.c
+
+#./sign < $1 | sort | awk -f squash.awk > out 
+#awk '{ print NF " " $0}' < out | sort -nr -o out | head -n8
+
+./sign < /usr/share/dict/words | sort | awk -f squash.awk | awk '{ print NF " " $0}' | sort -nr | head -n8
+

@@ -1,0 +1,11 @@
+{
+  "index" : "",
+    "required" : {
+      "files": [],
+      "directories" : []
+   },
+  "other" : {
+    "files": ["anagram", "anagrams.md", "anagram.txt", "index.html", "newSample", "out", "sample.in", "sign", "sign.c", "squash", "squash.awk"], 
+    "directories" : []
+    }
+}

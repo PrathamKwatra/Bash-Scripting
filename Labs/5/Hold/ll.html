@@ -1,0 +1,115 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<html>
+<head>
+	<meta http-equiv="Content-Language" content="en-us">
+	<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+	<meta http-equiv="Expires" content="no-expire">
+	<meta name="Author" content="Kurt Schmidt"><meta name="Copyright" content="">
+	<meta name="Publisher" content="Drexel University">
+	<meta name="Keywords" content="Programming Techniques Unix">
+	<meta name="Description"
+		content="Lab for CS265 - Adv. Programming Techniques">
+	<meta name="Pagetype" content="Lab">
+	<meta name="Audience" content="All">
+	<link rel='shortcut icon' type='image/gif'
+		href='../../../images/drexel.gif'></link>
+	<script language="JavaScript" src="../../courseInfo.js"></script>
+	<script language="JavaScript" src="../../../Scripts/courseFormat.js"></script>
+	<title> Lab -- C Language, Pointers </title>
+	<link href="../labs.css" rel="stylesheet" type="text/css">
+</head>
+
+<body text="#330099" link="#000066" vlink="#000066" alink="#ff0000"
+	background="../../../images/blueTexture.jpeg">
+
+
+<h3> The Exercises </h3>
+
+<p> For these exercises, <span class='cmd'>sNode</span> will be defined: </p>
+
+<div class='file'>
+<pre>typedef struct sNode sNode ;
+
+struct sNode
+{
+   int i ;
+   sNode *next ;
+} ;</pre>
+</div>
+
+<h4> Arrays </h4>
+
+<p> Remember that <span class='code'>a[i]</span> is equivalent to <span class='code'>*(a+i)</span> . </p>
+
+<script><!--
+	q = "Recall <span class='code'>add3</span> from last week.  Rewrite the function, "
+	q	+= "call it <span class='code'>add3i(int *a, int n)</span> , but don't use <span class='code'>[]</span> .  "
+	q += "Only pointer addition and dereference." 
+	question( q )
+	//--></script>
+
+<h4> Linked lists </h4>
+
+<p> For all of these, draw pictures, see what's happening.  Start by solving a general case, test it.  Then consider any
+border cases which you may need to handle, tackle them imcrementally. </p>
+
+<script><!--
+	question( "Write a function <span class='code'>length( sNode *p )</span>  that takes a linked list, " +
+						"returns the number of elements in it." )
+	//--></script>
+
+<script><!--
+	question( "Write a function <span class='code'>sum( sNode *p )</span>  that takes a linked list, " +
+						"returns the sum of the data fields." )
+	//--></script>
+
+<script><!--
+	question( "Write a function <span class='code'>addk( sNode *p, int k )</span>  that takes a linked list, " +
+						"adds <var>k</var> to each data field." )
+	//--></script>
+
+<script><!--
+	q = "Write a function, <span class='code'>purge( sNode *p, int targ )</span> "
+	q += "that removes <u>all</u> nodes containing <var>targ</var> from the list "
+	q += "pointed to by <var>p</var>."
+	question( q )
+	//--></script>
+
+<p> This one is a little tricky.  You have some border conditions to test for: </p>
+	<ul>
+		<li> The first node is to be removed </li>
+		<li> The last node is to be removed </li>
+		<li> An node to be removed is followed by a node to be removed </li>
+	</ul>
+
+<p> Again, write this in stages.  For example, maybe handle these cases in turn: </p>
+
+	<ol>
+		<li> Just a single node to be removed, buried in the middle </li>
+		<li> Just a single node to be removed, at the front </li>
+		<li> Just a single node to be removed, at the end </li>
+		<li> Just a single node to be removed, the only one </li>
+		<li> More than one target, not adjacent </li>
+		<li> Several targets, some adjacent </li>
+	</ol>
+
+<!--
+<h4> A Stack Implementation </h4>
+
+	<p> In <span class='fn'>Labs/C/Stack-ll</span> see files: </p>
+		<ol>
+			<li> <span class='fn'>stack.h</span> &mdash; Interface for a stack of integers </li>
+			<li> <span class='fn'>stack.c</span> &mdash; Implementation for the stack functions, partially implemented </li>
+			<li> <span class='fn'>main.c</span> &mdash; Test driver for your stack </li>
+			<li> <span class='fn'>makefile</span> </li>
+		</ol>
+
+	<p> The <span class='fn'>stack.h</span> file is written to be generic.  That is, if a client only codes to the
+		provided interface, we can swap the implementation for an array-based stack, e.g., and the client code shouldn't be
+		affected, shouldn't need to be modified. </p>
+
+	<p> The stack has been partially implemented, by way of example, and definition.  There are three functions for you to
+		finish (find the <span class='code'>TODO</spans>s).  Get this working, and submit the implementation file. </p>
+-->
+
+</body></html>

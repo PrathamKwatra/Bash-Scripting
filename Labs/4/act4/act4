@@ -1,0 +1,14 @@
+ Pratham Kwatra
+Nam Hai Dao
+Xinyu Jiang
+Tam Hoang Minh Phi
+Isamu Mclean Isozaki
+
+Q1) we used single quotes to escape special charr
+
+Question 2) sed '/[Tt]he/ d' s1
+
+Question 3) yes the single quotes were needed to escape the special characters
+
+Question 4) sed '/<head>/,/<\/head>/ s/Kurt/Vera/g' s1
+
